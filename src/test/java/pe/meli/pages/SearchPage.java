@@ -84,18 +84,18 @@ public class SearchPage {
     }
 
     /**
-     * Devuelve el precio más bajo encontrado en la página (como entero, sin decimales).
-     * Si no hay precios visibles devuelve -1.
+     * Devuelve el precio más bajo encontrado en la página (como double, incluyendo decimales).
+     * Si no hay precios visibles devuelve -1.0.
      */
-    public int obtenerPrecioMasBarato() {
+    public double obtenerPrecioMasBarato() {
         wait.until(ExpectedConditions.visibilityOfAllElements(priceFractions));
         return priceFractions.stream()
                 .map(WebElement::getText)
-                .map(t -> t.replaceAll("[^0-9]", ""))
+                .map(t -> t.replaceAll("[^0-9,.]", "").replace(",", "."))
                 .filter(t -> !t.isEmpty())
-                .mapToInt(Integer::parseInt)
+                .mapToDouble(Double::parseDouble)
                 .min()
-                .orElse(-1);
+                .orElse(-1.0);
     }
 
     /**
