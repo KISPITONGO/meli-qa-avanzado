@@ -78,19 +78,19 @@ class Ejercicio6_FlujoCompletoTest extends BaseTest {
 
         // Buscar el primero y guardar precio
         searchPage.buscar("mouse gaming");
-        int precioMouseGaming = searchPage.obtenerPrecioMasBarato();
+        double precioMouseGaming = searchPage.obtenerPrecioMasBarato();
         System.out.println(">>> Precio más bajo mouse gaming: S/ " + precioMouseGaming);
 
         // Volver al home y buscar otro producto
         driver.get(BASE_URL);
         searchPage.buscar("mouse básico");
-        int precioMouseBasico = searchPage.obtenerPrecioMasBarato();
+        double precioMouseBasico = searchPage.obtenerPrecioMasBarato();
         System.out.println(">>> Precio más bajo mouse básico:  S/ " + precioMouseBasico);
 
         // Ambos deben tener precios válidos
         assertAll(
-                () -> assertNotEquals(-1, precioMouseGaming, "No se encontró precio para mouse gaming"),
-                () -> assertNotEquals(-1, precioMouseBasico, "No se encontró precio para mouse básico")
+                () -> assertNotEquals(-1.0, precioMouseGaming, "No se encontró precio para mouse gaming"),
+                () -> assertNotEquals(-1.0, precioMouseBasico, "No se encontró precio para mouse básico")
         );
 
         // El mouse gaming debería ser más caro (o igual) que el básico

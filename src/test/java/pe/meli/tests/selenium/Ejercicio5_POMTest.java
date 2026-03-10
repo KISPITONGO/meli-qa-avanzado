@@ -40,10 +40,10 @@ class Ejercicio5_POMTest extends BaseTest {
 
         searchPage.buscar("teclado");
 
-        int precioMasBarato = searchPage.obtenerPrecioMasBarato();
+        double precioMasBarato = searchPage.obtenerPrecioMasBarato();
 
         System.out.println(">>> Precio más barato encontrado: S/ " + precioMasBarato);
-        assertNotEquals(-1, precioMasBarato,
+        assertNotEquals(-1.0, precioMasBarato,
                 "No se encontró ningún precio en la página");
         assertTrue(precioMasBarato > 0,
                 "El precio debe ser mayor que 0, se obtuvo: " + precioMasBarato);
