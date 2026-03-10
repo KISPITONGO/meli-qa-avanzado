@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\Users\\\\DEVELOPER\\\\Desktop\\\\meli-qa-avanzado\\\\meli-qa-avanzado\" && mvn test -Dtest=Ejercicio5_POMTest -q)"
+    ]
+  }
+}
